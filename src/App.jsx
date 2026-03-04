@@ -9,6 +9,7 @@ import ExamRunner from './components/ExamRunner'
 import Results from './components/Results'
 import Terms from './components/Terms'
 import AnkiDeck from './components/AnkiDeck'
+import Suggestions from './components/Suggestions'
 
 const VIEWS = {
   HOME: 'home',
@@ -17,6 +18,7 @@ const VIEWS = {
   RESULTS: 'results',
   TERMS: 'terms',
   REPASO: 'repaso',
+  SUGGESTIONS: 'suggestions',
 }
 
 export default function App() {
@@ -56,6 +58,7 @@ export default function App() {
       onNavigateHome={() => setView(VIEWS.HOME)}
       onNavigateTerms={() => setView(VIEWS.TERMS)}
       onNavigateRepaso={() => setView(VIEWS.REPASO)}
+      onNavigateSuggestions={() => setView(VIEWS.SUGGESTIONS)}
       ankiDeckCount={deckCount}
     >
       {view === VIEWS.HOME && (
@@ -97,6 +100,10 @@ export default function App() {
 
       {view === VIEWS.REPASO && (
         <AnkiDeck />
+      )}
+
+      {view === VIEWS.SUGGESTIONS && (
+        <Suggestions onBack={() => setView(VIEWS.HOME)} />
       )}
     </Layout>
   )
